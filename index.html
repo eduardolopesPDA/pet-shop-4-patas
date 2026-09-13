@@ -192,6 +192,25 @@
   .why-item h3{ font-size:1.02rem; font-weight:700; margin-block-end:4px; }
   .why-item p{ color:var(--ink-soft); font-size:0.92rem; margin:0; }
 
+  /* ---------- serviços (banho e tosa) ---------- */
+  .service-card{
+    background:var(--surface-blue); border-radius:22px; padding:30px;
+    display:flex; align-items:center; gap:26px; flex-wrap:wrap;
+  }
+  .service-card .product-icon{ width:64px; height:64px; border-radius:18px; background:var(--surface); }
+  .service-card .product-icon svg{ width:32px; height:32px; }
+  .service-body{ flex:1; min-width:220px; }
+  .service-body h3{ font-family:"Baloo 2",sans-serif; font-size:1.25rem; font-weight:700; margin-block-end:6px; }
+  .service-body p{ color:var(--ink-soft); margin:0 0 16px; max-width:52ch; }
+  .service-gallery{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-block-start:24px;
+  }
+  @media (max-width:560px){ .service-gallery{ grid-template-columns:repeat(2,1fr); } }
+  .service-gallery img{
+    width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:14px; border:1px solid var(--border);
+  }
+  .service-gallery-note{ font-size:0.85rem; color:var(--ink-soft); margin-block-start:10px; }
+
   /* ---------- hours / location plaque ---------- */
   .plaque{
     background:var(--blue-deep); border-radius:26px; padding:38px;
@@ -253,6 +272,7 @@
     </a>
     <nav class="nav-links" aria-label="Navegação principal">
       <a href="#produtos">Produtos</a>
+      <a href="#servicos">Banho &amp; tosa</a>
       <a href="#horario">Horário &amp; local</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -337,6 +357,24 @@
         <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.2 6.5A3 3 0 0 1 15.85 20H8.15a3 3 0 0 1-2.95-2.5L4 11Z"/><path d="M6 11a6 6 0 0 1 12 0"/><path d="M9 7.5c.5-1 1-1.5 1-2.5M15 7.5c-.5-1-1-1.5-1-2.5"/></svg></div>
         <h3>Potes</h3>
         <p>Para água e ração, em tamanhos para cada tipo de pet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="wrap">
+    <div class="section-head">
+      <div class="kicker">Serviços</div>
+      <h2>Banho e tosa também aqui</h2>
+      <p>Seu cão ou gato sai limpinho, cheiroso e bem cuidado — sem precisar ir longe.</p>
+    </div>
+    <div class="service-card">
+      <div class="product-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 7.2 6 11.2a6 6 0 0 1-12 0C6 10.2 12 3 12 3Z"/><circle cx="17.2" cy="6.2" r="1.2" fill="currentColor" stroke="none"/><circle cx="19.2" cy="9.4" r="0.9" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <div class="service-body">
+        <h3>Banho e tosa</h3>
+        <p>Agende um horário para o banho e a tosa do seu pet direto pelo WhatsApp.</p>
+        <a class="btn btn-primary btn-small" href="https://wa.me/5511952144127?text=Ol%C3%A1%21%20Queria%20agendar%20um%20banho%20e%20tosa%20para%20o%20meu%20pet." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
       </div>
     </div>
   </section>
