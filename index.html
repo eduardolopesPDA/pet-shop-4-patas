@@ -1,0 +1,421 @@
+<title>Pet Shop Quatro Patas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A4A;
+    --ink-soft:#4A5A7A;
+    --blue:#1E5FA8;
+    --blue-deep:#123A6B;
+    --yellow:#F2B705;
+    --yellow-deep:#C98F02;
+    --cream:#FBF6EC;
+    --surface:#FFFFFF;
+    --surface-blue:#E8EEF5;
+    --border:#E1D6BE;
+    --focus:#0F63C7;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#F0ECDF;
+      --ink-soft:#B9C4DC;
+      --blue:#5B9BE0;
+      --blue-deep:#2E5C97;
+      --yellow:#F2BE33;
+      --yellow-deep:#F6D06B;
+      --cream:#0F1830;
+      --surface:#17223F;
+      --surface-blue:#1C2A4C;
+      --border:#2C3B60;
+      --focus:#7FB2EE;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#F0ECDF;
+    --ink-soft:#B9C4DC;
+    --blue:#5B9BE0;
+    --blue-deep:#2E5C97;
+    --yellow:#F2BE33;
+    --yellow-deep:#F6D06B;
+    --cream:#0F1830;
+    --surface:#17223F;
+    --surface-blue:#1C2A4C;
+    --border:#2C3B60;
+    --focus:#7FB2EE;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Nunito Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    padding-inline:20px;
+    padding-block-end:96px;
+  }
+  @media (min-width:641px){ body{ padding-block-end:0; } }
+
+  h1,h2,h3{
+    font-family:"Baloo 2", ui-rounded, "Nunito Sans", sans-serif;
+    color:var(--ink);
+    line-height:1.15;
+    text-wrap:balance;
+    margin:0;
+  }
+
+  a{ color:inherit; }
+  img,svg{ max-width:100%; }
+
+  .wrap{ max-width:1080px; margin-inline:auto; }
+
+  :focus-visible{ outline:3px solid var(--focus); outline-offset:3px; border-radius:4px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding-block:14px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand svg{ width:34px; height:34px; flex:none; }
+  .brand-name{ font-family:"Baloo 2",sans-serif; font-weight:700; font-size:1.15rem; color:var(--blue-deep); }
+  [data-theme="dark"] .brand-name, @media (prefers-color-scheme:dark){ .brand-name{ color:var(--yellow); } }
+  .nav-links{ display:flex; gap:22px; font-weight:600; font-size:0.95rem; }
+  .nav-links a{ text-decoration:none; color:var(--ink-soft); }
+  .nav-links a:hover{ color:var(--blue); }
+  @media (max-width:640px){ .nav-links{ display:none; } }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:"Nunito Sans",sans-serif; font-weight:800; font-size:0.95rem;
+    padding:12px 20px; border-radius:999px; text-decoration:none;
+    border:2px solid transparent; white-space:nowrap; cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--yellow); color:var(--blue-deep); box-shadow:0 3px 0 var(--yellow-deep); }
+  .btn-primary:hover{ box-shadow:0 4px 0 var(--yellow-deep); }
+  .btn-primary:active{ transform:translateY(1px); box-shadow:0 1px 0 var(--yellow-deep); }
+  .btn-outline{ background:transparent; color:var(--blue); border-color:var(--blue); }
+  [data-theme="dark"] .btn-outline, @media (prefers-color-scheme:dark){ .btn-outline{ color:var(--yellow); border-color:var(--yellow); } }
+  .btn-small{ padding:9px 16px; font-size:0.85rem; }
+  .btn svg{ width:18px; height:18px; flex:none; }
+
+  /* ---------- hero ---------- */
+  .hero{ padding-block:56px 40px; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; }
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--surface-blue); color:var(--blue-deep);
+    font-weight:700; font-size:0.8rem; letter-spacing:.06em; text-transform:uppercase;
+    padding:6px 14px; border-radius:999px; margin-bottom:16px;
+  }
+  [data-theme="dark"] .eyebrow, @media (prefers-color-scheme:dark){ .eyebrow{ color:var(--yellow); } }
+  .hero h1{ font-size:clamp(2rem, 4vw + 1rem, 3.2rem); font-weight:800; }
+  .hero h1 em{ font-style:normal; color:var(--blue); }
+  [data-theme="dark"] .hero h1 em, @media (prefers-color-scheme:dark){ .hero h1 em{ color:var(--yellow); } }
+  .hero p.lede{ font-size:1.1rem; color:var(--ink-soft); max-width:46ch; margin-block-start:16px; }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-block-start:26px; }
+
+  .quickfacts{
+    display:flex; flex-wrap:wrap; gap:10px 22px; margin-block-start:28px;
+    font-size:0.9rem; font-weight:700; color:var(--ink-soft);
+  }
+  .quickfacts span{ display:flex; align-items:center; gap:7px; }
+  .quickfacts svg{ width:17px; height:17px; color:var(--blue); flex:none; }
+  [data-theme="dark"] .quickfacts svg, @media (prefers-color-scheme:dark){ .quickfacts svg{ color:var(--yellow); } }
+
+  .storefront-card{
+    background:var(--blue-deep); border-radius:26px; padding:22px;
+    position:relative; overflow:hidden;
+  }
+  .storefront-card svg{ display:block; width:100%; height:auto; }
+  .paw-field{ position:absolute; inset:0; opacity:.10; }
+
+  /* ---------- section shell ---------- */
+  section{ padding-block:44px; }
+  .section-head{ max-width:60ch; margin-block-end:30px; }
+  .section-head h2{ font-size:clamp(1.5rem,2vw + 1rem,2.1rem); font-weight:700; }
+  .section-head p{ color:var(--ink-soft); margin-block-start:10px; font-size:1.02rem; }
+  .kicker{
+    font-weight:800; font-size:0.78rem; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--blue); margin-block-end:8px;
+  }
+  [data-theme="dark"] .kicker, @media (prefers-color-scheme:dark){ .kicker{ color:var(--yellow); } }
+
+  /* ---------- products ---------- */
+  .product-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+  }
+  @media (max-width:920px){ .product-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .product-grid{ grid-template-columns:1fr; } }
+  .product-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:18px;
+    padding:22px 20px; display:flex; flex-direction:column; gap:12px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .product-card:hover{ transform:translateY(-3px); box-shadow:0 10px 24px -14px rgba(18,58,107,.35); }
+  .product-icon{
+    width:52px; height:52px; border-radius:14px; background:var(--surface-blue);
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .product-icon svg{ width:28px; height:28px; color:var(--blue); }
+  [data-theme="dark"] .product-icon svg, @media (prefers-color-scheme:dark){ .product-icon svg{ color:var(--yellow); } }
+  .product-card h3{ font-size:1.08rem; font-weight:700; }
+  .product-card p{ color:var(--ink-soft); font-size:0.92rem; margin:0; }
+
+  /* ---------- why us ---------- */
+  .why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-item{ display:flex; gap:14px; }
+  .why-icon{
+    width:44px; height:44px; border-radius:50%; background:var(--surface-blue);
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .why-icon svg{ width:22px; height:22px; color:var(--blue); }
+  [data-theme="dark"] .why-icon svg, @media (prefers-color-scheme:dark){ .why-icon svg{ color:var(--yellow); } }
+  .why-item h3{ font-size:1.02rem; font-weight:700; margin-block-end:4px; }
+  .why-item p{ color:var(--ink-soft); font-size:0.92rem; margin:0; }
+
+  /* ---------- hours / location plaque ---------- */
+  .plaque{
+    background:var(--blue-deep); border-radius:26px; padding:38px;
+    display:grid; grid-template-columns:1fr 1fr; gap:36px;
+    position:relative; overflow:hidden;
+  }
+  @media (max-width:760px){ .plaque{ grid-template-columns:1fr; padding:28px 22px; } }
+  .plaque::before{
+    content:""; position:absolute; inset:0 0 auto 0; height:10px; background:var(--yellow);
+  }
+  .plaque h2, .plaque h3{ color:#FFF8E6; }
+  .plaque .kicker{ color:var(--yellow); }
+  .hours-table{ width:100%; border-collapse:collapse; margin-block-start:16px; }
+  .hours-table td{ padding:9px 0; color:#EAF1FB; font-size:0.98rem; border-bottom:1px solid rgba(255,255,255,.14); font-variant-numeric:tabular-nums; }
+  .hours-table td:last-child{ text-align:right; font-weight:700; }
+  .hours-table tr:last-child td{ border-bottom:none; }
+  .addr-block p{ color:#EAF1FB; margin:0 0 22px; font-size:1rem; }
+  .addr-block .addr-line{ font-weight:700; color:#FFFFFF; }
+  .plaque-ctas{ display:flex; flex-wrap:wrap; gap:10px; }
+
+  /* ---------- final cta ---------- */
+  .final-cta{
+    background:var(--surface-blue); border-radius:26px; padding:40px 34px;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px;
+  }
+  .final-cta h2{ font-size:1.5rem; max-width:26ch; }
+  .final-cta p{ color:var(--ink-soft); margin-block-start:8px; }
+  .phone-display{ font-family:"Baloo 2",sans-serif; font-weight:700; font-size:1.3rem; color:var(--blue-deep); font-variant-numeric:tabular-nums; }
+  [data-theme="dark"] .phone-display, @media (prefers-color-scheme:dark){ .phone-display{ color:var(--yellow); } }
+
+  footer{ padding-block:32px 40px; border-top:1px solid var(--border); margin-block-start:20px; }
+  .foot-row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:0.88rem; color:var(--ink-soft); }
+  .foot-brand{ display:flex; align-items:center; gap:8px; font-family:"Baloo 2",sans-serif; font-weight:700; color:var(--ink); }
+  .foot-brand svg{ width:22px; height:22px; }
+
+  /* ---------- sticky mobile cta ---------- */
+  .mobile-cta{
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    display:none; gap:10px; padding:12px 16px;
+    background:var(--surface); border-top:1px solid var(--border);
+    box-shadow:0 -6px 20px -12px rgba(0,0,0,.25);
+  }
+  @media (max-width:640px){ .mobile-cta{ display:flex; } }
+  .mobile-cta .btn{ flex:1; justify-content:center; }
+
+  /* subtle load-in, from a visible resting state */
+  .hero h1, .hero p.lede, .hero-ctas, .quickfacts{ animation:rise .5s ease both; }
+  .hero p.lede{ animation-delay:.05s; }
+  .hero-ctas{ animation-delay:.1s; }
+  .quickfacts{ animation-delay:.15s; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:translateY(0); } }
+</style>
+
+<header>
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="Pet Shop Quatro Patas">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="var(--blue)"/><g fill="var(--yellow)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g></svg>
+      <span class="brand-name">Quatro&nbsp;Patas</span>
+    </a>
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#produtos">Produtos</a>
+      <a href="#horario">Horário &amp; local</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-primary btn-small" href="https://wa.me/5511952144127?text=Ol%C3%A1%21%20Vi%20a%20p%C3%A1gina%20do%20Pet%20Shop%20Quatro%20Patas%20e%20queria%20saber%20mais." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.98.62 3.82 1.68 5.35L2.6 21.4a.7.7 0 0 0 .87.86l4.5-1.16A10.2 10.2 0 0 0 12 21.4c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm5.6 13.8c-.24.66-1.4 1.28-1.94 1.35-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.22-4.8-4.02-4.94-4.2-.14-.19-1.17-1.5-1.17-2.86 0-1.36.73-2.03.99-2.3.26-.28.57-.35.76-.35h.55c.18 0 .42-.03.63.46.24.57.8 1.98.87 2.13.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.13.55.16.28.7 1.13 1.5 1.82 1.03.89 1.9 1.17 2.18 1.3.28.14.44.12.6-.07.16-.19.68-.77.86-1.03.18-.27.36-.22.6-.13.24.09 1.55.71 1.81.84.26.13.44.19.5.3.07.12.07.65-.17 1.31Z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Petshop no Jardim Aurélio, São Paulo</span>
+        <h1>Tudo para o seu pet, <em>pertinho</em> de casa</h1>
+        <p class="lede">Ração, coleiras, guias e potes de água e comida para cães e gatos. Atendimento rápido por WhatsApp ou telefone, direto com quem cuida do seu bichinho no dia a dia.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://wa.me/5511952144127?text=Ol%C3%A1%21%20Vi%20a%20p%C3%A1gina%20do%20Pet%20Shop%20Quatro%20Patas%20e%20queria%20saber%20mais." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.35 2 11.7c0 1.98.62 3.82 1.68 5.35L2.6 21.4a.7.7 0 0 0 .87.86l4.5-1.16A10.2 10.2 0 0 0 12 21.4c5.52 0 10-4.35 10-9.7S17.52 2 12 2Zm5.6 13.8c-.24.66-1.4 1.28-1.94 1.35-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.22-4.8-4.02-4.94-4.2-.14-.19-1.17-1.5-1.17-2.86 0-1.36.73-2.03.99-2.3.26-.28.57-.35.76-.35h.55c.18 0 .42-.03.63.46.24.57.8 1.98.87 2.13.07.14.11.31.02.5-.09.19-.14.31-.28.47-.14.16-.29.36-.42.48-.14.13-.28.28-.13.55.16.28.7 1.13 1.5 1.82 1.03.89 1.9 1.17 2.18 1.3.28.14.44.12.6-.07.16-.19.68-.77.86-1.03.18-.27.36-.22.6-.13.24.09 1.55.71 1.81.84.26.13.44.19.5.3.07.12.07.65-.17 1.31Z"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <a class="btn btn-outline" href="tel:+5511952144127">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
+            (11) 95214-4127
+          </a>
+        </div>
+        <div class="quickfacts">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Seg a sáb, 9h–19h</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Jardim Aurélio, São Paulo</span>
+        </div>
+      </div>
+
+      <div class="storefront-card" aria-hidden="true">
+        <svg class="paw-field" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+          <g fill="#F2B705">
+            <g transform="translate(15,20) scale(0.5)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g>
+            <g transform="translate(140,60) scale(0.4) rotate(15)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g>
+            <g transform="translate(60,140) scale(0.45) rotate(-10)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g>
+            <g transform="translate(150,150) scale(0.35)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g>
+          </g>
+        </svg>
+        <svg viewBox="0 0 320 260" role="img" aria-label="Ilustração da fachada azul e amarela do Pet Shop Quatro Patas">
+          <rect x="10" y="70" width="300" height="170" rx="10" fill="#2E5C97"/>
+          <rect x="10" y="70" width="300" height="34" fill="#F2B705"/>
+          <rect x="26" y="86" width="268" height="8" rx="4" fill="#123A6B" opacity=".25"/>
+          <rect x="40" y="130" width="70" height="90" rx="6" fill="#0F2C55"/>
+          <rect x="40" y="130" width="70" height="90" rx="6" fill="none" stroke="#EAF1FB" stroke-width="3"/>
+          <rect x="130" y="120" width="60" height="60" rx="6" fill="#EAF1FB"/>
+          <rect x="200" y="120" width="60" height="60" rx="6" fill="#EAF1FB"/>
+          <g fill="#F2B705"><ellipse cx="160" cy="150" rx="7" ry="6"/><circle cx="153" cy="141" r="2.6"/><circle cx="158" cy="137.5" r="2.8"/><circle cx="163" cy="137.5" r="2.8"/><circle cx="168" cy="141" r="2.6"/></g>
+          <g fill="#2E5C97"><ellipse cx="230" cy="150" rx="7" ry="6"/><circle cx="223" cy="141" r="2.6"/><circle cx="228" cy="137.5" r="2.8"/><circle cx="233" cy="137.5" r="2.8"/><circle cx="238" cy="141" r="2.6"/></g>
+          <rect x="0" y="236" width="320" height="10" fill="#0B2140"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="produtos" class="wrap">
+    <div class="section-head">
+      <div class="kicker">O que temos por aqui</div>
+      <h2>Do essencial ao dia a dia do seu pet</h2>
+      <p>Uma seleção pensada para cães e gatos de todos os portes — para comprar rapidinho e voltar pra casa.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8c-2 1-3 3-3 6a5 5 0 0 0 5 5h8a5 5 0 0 0 5-5c0-3-1-5-3-6l-2-4H8L6 8Z"/><path d="M9 8h6"/><circle cx="9" cy="13" r="1"/><circle cx="13" cy="13" r="1"/><circle cx="11" cy="16.5" r="1"/></svg></div>
+        <h3>Ração</h3>
+        <p>Para filhotes, adultos e idosos — cães e gatos de vários portes.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M9 4.5 12 9l3-4.5"/></svg></div>
+        <h3>Coleiras</h3>
+        <p>Modelos e tamanhos variados, com fivela ajustável e conforto.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c4-1 5-5 5-8s2-6 6-6"/><circle cx="17" cy="5" r="2.2"/><circle cx="4" cy="20" r="1.6"/></svg></div>
+        <h3>Guias</h3>
+        <p>Pra passeios tranquilos, do filhote levinho ao cão mais forte.</p>
+      </div>
+      <div class="product-card">
+        <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.2 6.5A3 3 0 0 1 15.85 20H8.15a3 3 0 0 1-2.95-2.5L4 11Z"/><path d="M6 11a6 6 0 0 1 12 0"/><path d="M9 7.5c.5-1 1-1.5 1-2.5M15 7.5c-.5-1-1-1.5-1-2.5"/></svg></div>
+        <h3>Potes</h3>
+        <p>Para água e ração, em tamanhos para cada tipo de pet.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head">
+      <div class="kicker">Por que vir até aqui</div>
+      <h2>Feito pra ser fácil pra quem mora por perto</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><h3>Bem no bairro</h3><p>No Jardim Aurélio, fácil de chegar a pé ou de carro sem sair da região.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div><h3>Aberto 6 dias por semana</h3><p>Segunda a sábado, das 9h às 19h — encaixa na rotina de quem trabalha.</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div><h3>Resposta rápida</h3><p>Chama no WhatsApp ou liga direto — sem robô, sem enrolação.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="horario" class="wrap">
+    <div class="plaque">
+      <div>
+        <div class="kicker">Horário de funcionamento</div>
+        <h2>Quando estamos abertos</h2>
+        <table class="hours-table">
+          <tr><td>Segunda a sexta</td><td>9h – 19h</td></tr>
+          <tr><td>Sábado</td><td>9h – 19h</td></tr>
+          <tr><td>Domingo</td><td>Fechado</td></tr>
+        </table>
+      </div>
+      <div class="addr-block">
+        <div class="kicker">Endereço</div>
+        <p class="addr-line">Rua Maria Clara da Silva Sant'Anna, 3<br>Jardim Aurélio, São Paulo - SP<br>CEP 05857-380</p>
+        <div class="plaque-ctas">
+          <a class="btn btn-primary btn-small" href="https://www.google.com/maps/search/?api=1&query=Rua+Maria+Clara+da+Silva+Sant%27Anna%2C+3+-+Jardim+Aur%C3%A9lio%2C+S%C3%A3o+Paulo+-+SP%2C+05857-380" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ver no mapa
+          </a>
+          <a class="btn btn-outline btn-small" style="border-color:#EAF1FB;color:#EAF1FB" href="tel:+5511952144127">Ligar agora</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="wrap">
+    <div class="final-cta">
+      <div>
+        <h2>Ficou com dúvida sobre algum produto?</h2>
+        <p>Fala com a gente antes de vir — respondemos rapidinho.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;">
+        <span class="phone-display">(11) 95214-4127</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="https://wa.me/5511952144127?text=Ol%C3%A1%21%20Vi%20a%20p%C3%A1gina%20do%20Pet%20Shop%20Quatro%20Patas%20e%20queria%20saber%20mais." target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-outline" href="tel:+5511952144127">Ligar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="foot-brand">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="var(--blue)"/><g fill="var(--yellow)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g></svg>
+      Pet Shop Quatro Patas
+    </div>
+    <div>Rua Maria Clara da Silva Sant'Anna, 3 · Jardim Aurélio, São Paulo - SP</div>
+    <div>(11) 95214-4127 · Seg a sáb, 9h–19h</div>
+  </div>
+</footer>
+
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="https://wa.me/5511952144127?text=Ol%C3%A1%21%20Vi%20a%20p%C3%A1gina%20do%20Pet%20Shop%20Quatro%20Patas%20e%20queria%20saber%20mais." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-outline" href="tel:+5511952144127">Ligar</a>
+</div>
