@@ -14,12 +14,14 @@ Landing page de divulgação para o **Pet Shop Quatro Patas**, no Jardim Auréli
 
 ## Tecnologia
 
-Página única em HTML/CSS/JS puro (sem build, sem dependências), com fontes carregadas do Google Fonts (Baloo 2 e Nunito Sans). Compatível com tema claro e escuro, responsiva para celular.
+HTML/CSS/JS puro (sem build, sem dependências), com fontes carregadas do Google Fonts (Baloo 2 e Nunito Sans). Compatível com tema claro e escuro, responsiva para celular.
 
 ## Estrutura
 
 ```
-index.html      página completa (HTML + CSS + JS inline)
+index.html      estrutura da página (HTML)
+style.css       todo o estilo visual (cores, layout, responsividade)
+script.js       reservado para futuras interações (hoje a página não precisa de JS)
 photos/         fotos usadas na página
 ```
 
