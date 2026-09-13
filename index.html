@@ -321,16 +321,21 @@
             <g transform="translate(150,150) scale(0.35)"><ellipse cx="24" cy="29" rx="9" ry="7.5"/><circle cx="14.5" cy="18" r="3.4"/><circle cx="21" cy="13.5" r="3.6"/><circle cx="27" cy="13.5" r="3.6"/><circle cx="33.5" cy="18" r="3.4"/></g>
           </g>
         </svg>
-        <svg viewBox="0 0 320 260" role="img" aria-label="Ilustração da fachada azul e amarela do Pet Shop Quatro Patas">
+        <svg viewBox="0 0 320 260" role="img" aria-label="Ilustração da fachada azul e amarela do Pet Shop Quatro Patas, com fotos de um cachorro com seu tutor, um filhote e um gatinho">
+          <defs>
+            <clipPath id="clipDoor"><rect x="40" y="130" width="70" height="90" rx="6"/></clipPath>
+            <clipPath id="clipDog"><rect x="130" y="120" width="60" height="60" rx="6"/></clipPath>
+            <clipPath id="clipCat"><rect x="200" y="120" width="60" height="60" rx="6"/></clipPath>
+          </defs>
           <rect x="10" y="70" width="300" height="170" rx="10" fill="#2E5C97"/>
           <rect x="10" y="70" width="300" height="34" fill="#F2B705"/>
           <rect x="26" y="86" width="268" height="8" rx="4" fill="#123A6B" opacity=".25"/>
-          <rect x="40" y="130" width="70" height="90" rx="6" fill="#0F2C55"/>
+          <image href="photos/dono-com-cachorro.jpg" x="40" y="130" width="70" height="90" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipDoor)"/>
           <rect x="40" y="130" width="70" height="90" rx="6" fill="none" stroke="#EAF1FB" stroke-width="3"/>
-          <rect x="130" y="120" width="60" height="60" rx="6" fill="#EAF1FB"/>
-          <rect x="200" y="120" width="60" height="60" rx="6" fill="#EAF1FB"/>
-          <g fill="#F2B705"><ellipse cx="160" cy="150" rx="7" ry="6"/><circle cx="153" cy="141" r="2.6"/><circle cx="158" cy="137.5" r="2.8"/><circle cx="163" cy="137.5" r="2.8"/><circle cx="168" cy="141" r="2.6"/></g>
-          <g fill="#2E5C97"><ellipse cx="230" cy="150" rx="7" ry="6"/><circle cx="223" cy="141" r="2.6"/><circle cx="228" cy="137.5" r="2.8"/><circle cx="233" cy="137.5" r="2.8"/><circle cx="238" cy="141" r="2.6"/></g>
+          <image href="photos/filhote-cachorro.jpg" x="130" y="120" width="60" height="60" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipDog)"/>
+          <image href="photos/gatinho.jpg" x="200" y="120" width="60" height="60" preserveAspectRatio="xMidYMid slice" clip-path="url(#clipCat)"/>
+          <rect x="130" y="120" width="60" height="60" rx="6" fill="none" stroke="#EAF1FB" stroke-width="2.5"/>
+          <rect x="200" y="120" width="60" height="60" rx="6" fill="none" stroke="#EAF1FB" stroke-width="2.5"/>
           <rect x="0" y="236" width="320" height="10" fill="#0B2140"/>
         </svg>
       </div>
