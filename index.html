@@ -245,6 +245,17 @@
   .addr-block p{ color:#EAF1FB; margin:0 0 22px; font-size:1rem; }
   .addr-block .addr-line{ font-weight:700; color:#FFFFFF; }
   .plaque-ctas{ display:flex; flex-wrap:wrap; gap:10px; }
+  .payment-row{
+    grid-column:1 / -1; display:flex; flex-wrap:wrap; align-items:center; gap:14px;
+    padding-block-start:22px; margin-block-start:4px; border-top:1px solid rgba(255,255,255,.16);
+  }
+  .payment-row .kicker{ margin:0; }
+  .payment-badges{ display:flex; flex-wrap:wrap; gap:10px; }
+  .payment-badge{
+    display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,.12);
+    color:#EAF1FB; padding:8px 14px; border-radius:999px; font-weight:700; font-size:0.85rem;
+  }
+  .payment-badge svg{ width:16px; height:16px; flex:none; }
 
   /* ---------- final cta ---------- */
   .final-cta{
@@ -453,6 +464,24 @@
             Ver no mapa
           </a>
           <a class="btn btn-outline btn-small" style="border-color:#EAF1FB;color:#EAF1FB" href="tel:+5511952144127">Ligar agora</a>
+        </div>
+      </div>
+
+      <div class="payment-row">
+        <span class="kicker">Formas de pagamento</span>
+        <div class="payment-badges">
+          <span class="payment-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>
+            Dinheiro
+          </span>
+          <span class="payment-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Cartão
+          </span>
+          <span class="payment-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+            Pix
+          </span>
         </div>
       </div>
     </div>
