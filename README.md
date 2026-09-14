@@ -25,7 +25,4 @@ script.js       reservado para futuras interações (hoje a página não precisa
 photos/         fotos usadas na página
 ```
 
-## Publicado como Artifact
 
-A versão publicada e sempre atualizada da página está em:
-https://claude.ai/code/artifact/57bfdcb6-d9bc-4c5c-8639-33bed7ca4762
